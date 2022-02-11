@@ -34,11 +34,21 @@ public class Combo implements Producto{
 			items += item.generarTextoFactura() + ", ";
 		}
 		return "El combo " + getNombre() + " tiene " + items.substring(0, items.length() - 2) + " con un descuento de "
-				+ descuento + " debes pagar " + getPrecio();
+				+ descuento + " debes pagar " + getPrecio() + "(Tiene " + getCalorias() + " calorias)";
 	}
 	
 	@Override
 	public String getNombre() {
 		return this.nombreCombo;
+	}
+
+	@Override
+	public int getCalorias() {
+		int sumCal = 0;
+		for(ProductoMenu item : itemsCombo) {
+			sumCal += item.getCalorias();
+		}
+		
+		return sumCal;
 	}
 }

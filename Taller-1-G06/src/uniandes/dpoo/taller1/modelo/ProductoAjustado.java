@@ -38,7 +38,7 @@ public class ProductoAjustado implements Producto {
 			itemsMin += item.getNombre() + ", ";
 		}
 		return "El producto " + base.getNombre() + " con " + itemsPlus.substring(0, itemsPlus.length() - 2) + " sin "
-				+ itemsMin.substring(0, itemsMin.length() - 2);
+				+ itemsMin.substring(0, itemsMin.length() - 2) + "(Tiene " + getCalorias() + " calorias)";
 	}
 	
 	public void modifyAdd(Ingrediente item) {
@@ -47,5 +47,10 @@ public class ProductoAjustado implements Producto {
 	
 	public void modifySub(Ingrediente item) {
 		eliminados.add(item);
+	}
+
+	@Override
+	public int getCalorias() {
+		return this.base.getCalorias();
 	}
 }

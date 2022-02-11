@@ -14,6 +14,7 @@ public class Restaurante {
 	private List<ProductoMenu> menuBase;
 	private List<Ingrediente> ingredientes;
 	private List<Pedido> pedidos;
+	private List<Bebida> bebidas;
 	private Pedido pedidoEnCurso;
 
 	public Restaurante() {
@@ -21,6 +22,7 @@ public class Restaurante {
 		this.menuBase = new ArrayList<ProductoMenu>();
 		this.ingredientes = new ArrayList<Ingrediente>();
 		this.pedidos = new ArrayList<Pedido>();
+		this.bebidas = new ArrayList<Bebida>();
 	}
 
 	public void cargarInformacionRestaurante(File fIngrediente, File fMenu, File fCombo, File fBebida)
@@ -28,6 +30,19 @@ public class Restaurante {
 		this.cargarIngredientes(fIngrediente);
 		this.cargarMenu(fMenu);
 		this.cargarCombo(fCombo);
+		this.cargarBebida(fBebida);
+	}
+
+	private void cargarBebida(File fBebida) throws IOException {
+		BufferedReader br = new BufferedReader(new FileReader(fBebida));
+		String line = br.readLine();
+		while (line != null) {
+			String[] info = line.split(";");
+			Bebida beb = new Bebida(info[0], Integer.parseInt(info[1]));
+			this.bebidas.add(beb);
+			line = br.readLine();
+		}
+		br.close();
 	}
 
 	private void cargarMenu(File fMenu) throws IOException {
@@ -42,12 +57,7 @@ public class Restaurante {
 		br.close();
 	}
 
-	/**
-	 * @param fCombo
-	 * @throws IOException
-	 */
 	private void cargarCombo(File fCombo) throws IOException {
-
 		BufferedReader br = new BufferedReader(new FileReader(fCombo));
 		String line = br.readLine();
 		while (line != null) {
