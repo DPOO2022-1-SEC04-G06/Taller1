@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 public class Pedido {
 	private static int numeroPedidos;
@@ -61,4 +63,28 @@ public class Pedido {
 		bw.append(generarTextoFactura());
 		bw.close();
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(itemsPedido);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		Pedido other = (Pedido) obj;
+		HashSet<Producto> item1 = new HashSet<Producto>(itemsPedido);
+		HashSet<Producto> item2 = new HashSet<Producto>(other.itemsPedido);
+		
+		return item1.equals(item2);
+	}
+	
 }

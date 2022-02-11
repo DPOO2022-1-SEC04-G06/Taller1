@@ -1,7 +1,9 @@
 package uniandes.dpoo.taller1.modelo;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 public class Combo implements Producto{
 	private double descuento;
@@ -51,4 +53,25 @@ public class Combo implements Producto{
 		
 		return sumCal;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(itemsCombo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Combo other = (Combo) obj;
+		HashSet<ProductoMenu> item1 = new HashSet<ProductoMenu>(itemsCombo);
+		HashSet<ProductoMenu> item2 = new HashSet<ProductoMenu>(other.itemsCombo);
+		return item1.equals(item2);
+	}
+	
+	
 }

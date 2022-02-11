@@ -1,5 +1,7 @@
 package uniandes.dpoo.taller1.modelo;
 
+import java.util.Objects;
+
 public class ProductoMenu implements Producto {
 	private String nombre;
 	private int precioBase;
@@ -29,4 +31,23 @@ public class ProductoMenu implements Producto {
 	public int getCalorias() {
 		return calorias;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(calorias, nombre, precioBase);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProductoMenu other = (ProductoMenu) obj;
+		return calorias == other.calorias && Objects.equals(nombre, other.nombre) && precioBase == other.precioBase;
+	}
+	
+	
 }

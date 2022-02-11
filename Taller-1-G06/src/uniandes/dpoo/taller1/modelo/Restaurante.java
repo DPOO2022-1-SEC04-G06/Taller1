@@ -206,4 +206,15 @@ public class Restaurante {
 		return null;
 	}
 
+	public String iguales() {
+		for(Pedido item : pedidos) {
+			if (this.pedidoEnCurso.equals(item)) {
+				return "Se encontro dos pedidos iguales: El pedido " + pedidoEnCurso.getIdPedido()
+						+ " y el pedido " + item.getIdPedido();
+			}
+		}
+		return "No hay pedidos iguales";
+		
+	}
+
 }

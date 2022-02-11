@@ -1,7 +1,9 @@
 package uniandes.dpoo.taller1.modelo;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 public class ProductoAjustado implements Producto {
 	private List<Ingrediente> agregados;
@@ -53,4 +55,30 @@ public class ProductoAjustado implements Producto {
 	public int getCalorias() {
 		return this.base.getCalorias();
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(agregados, base, eliminados);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProductoAjustado other = (ProductoAjustado) obj;
+		
+		HashSet<Ingrediente> add1 = new HashSet<Ingrediente>(agregados);
+		HashSet<Ingrediente> add2 = new HashSet<Ingrediente>(other.agregados);
+		HashSet<Ingrediente> sub1 = new HashSet<Ingrediente>(eliminados);
+		HashSet<Ingrediente> sub2 = new HashSet<Ingrediente>(other.eliminados);
+		
+		return add1.equals(add2) && Objects.equals(base, other.base)
+				&& sub1.equals(sub2);
+	}
+	
+	
 }

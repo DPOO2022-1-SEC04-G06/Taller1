@@ -70,6 +70,7 @@ public class Aplicacion {
 			break;
 		}
 		case 4: {
+			System.out.println(this.cont.iguales());
 			this.cont.cerrarYGuardarPedido();
 			break;
 		}
