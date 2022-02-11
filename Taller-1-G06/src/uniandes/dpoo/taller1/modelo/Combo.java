@@ -53,12 +53,7 @@ public class Combo implements Producto{
 		
 		return sumCal;
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(itemsCombo);
-	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

@@ -7,9 +7,10 @@ public class ProductoMenu implements Producto {
 	private int precioBase;
 	private int calorias;
 
-	public ProductoMenu(String nombre, int precioBase) {
+	public ProductoMenu(String nombre, int precioBase, int calorias) {
 		this.nombre = nombre;
 		this.precioBase = precioBase;
+		this.calorias = calorias;
 	}
 	
 	@Override
@@ -30,11 +31,6 @@ public class ProductoMenu implements Producto {
 	@Override
 	public int getCalorias() {
 		return calorias;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(calorias, nombre, precioBase);
 	}
 
 	@Override

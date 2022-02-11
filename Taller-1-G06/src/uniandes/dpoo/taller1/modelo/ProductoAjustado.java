@@ -55,12 +55,7 @@ public class ProductoAjustado implements Producto {
 	public int getCalorias() {
 		return this.base.getCalorias();
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(agregados, base, eliminados);
-	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

@@ -38,7 +38,7 @@ public class Restaurante {
 		String line = br.readLine();
 		while (line != null) {
 			String[] info = line.split(";");
-			Bebida beb = new Bebida(info[0], Integer.parseInt(info[1]));
+			Bebida beb = new Bebida(info[0], Integer.parseInt(info[1]), Integer.parseInt(info[2]));
 			this.bebidas.add(beb);
 			line = br.readLine();
 		}
@@ -50,7 +50,7 @@ public class Restaurante {
 		String line = br.readLine();
 		while (line != null) {
 			String[] info = line.split(";");
-			ProductoMenu pm = new ProductoMenu(info[0], Integer.parseInt(info[1]));
+			ProductoMenu pm = new ProductoMenu(info[0], Integer.parseInt(info[1]), Integer.parseInt(info[2]));
 			this.menuBase.add(pm);
 			line = br.readLine();
 		}
