@@ -1,7 +1,3 @@
-// 
-// Decompiled by Procyon v0.5.36
-// 
-
 package uniandes.dpoo.taller1.modelo;
 
 import java.util.ArrayList;
@@ -13,7 +9,7 @@ public class ProductoAjustado implements Producto
     private List<Ingrediente> eliminados;
     private ProductoMenu base;
     
-    public ProductoAjustado(final ProductoMenu pBase) {
+    public ProductoAjustado(ProductoMenu pBase) {
         this.agregados = new ArrayList<Ingrediente>();
         this.eliminados = new ArrayList<Ingrediente>();
         this.base = pBase;

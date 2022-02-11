@@ -1,7 +1,3 @@
-// 
-// Decompiled by Procyon v0.5.36
-// 
-
 package uniandes.dpoo.taller1.modelo;
 
 import java.io.File;
@@ -16,7 +12,7 @@ public class Pedido
     private String direccionCliente;
     private List<Producto> itemsPedido;
     
-    public Pedido(final String nombreCliente, final String direccionCliente) {
+    public Pedido(String nombreCliente, String direccionCliente) {
         this.nombreCliente = nombreCliente;
         this.direccionCliente = direccionCliente;
         this.itemsPedido = new ArrayList<Producto>();
@@ -28,7 +24,7 @@ public class Pedido
         return this.idPedido;
     }
     
-    public void agregarProducto(final Producto nuevoItem) {
+    public void agregarProducto(Producto nuevoItem) {
         this.itemsPedido.add(nuevoItem);
     }
     
@@ -48,6 +44,6 @@ public class Pedido
         return "";
     }
     
-    public void guardarFactura(final File arc) {
+    public void guardarFactura(File arc) {
     }
 }

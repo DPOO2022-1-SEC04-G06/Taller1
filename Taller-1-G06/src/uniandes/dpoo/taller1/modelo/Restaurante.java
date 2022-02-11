@@ -1,15 +1,9 @@
-// 
-// Decompiled by Procyon v0.5.36
-// 
-
 package uniandes.dpoo.taller1.modelo;
 
-import java.util.Iterator;
-import java.io.IOException;
-import java.io.Reader;
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,36 +22,38 @@ public class Restaurante
         this.pedidos = new ArrayList<Pedido>();
     }
     
-    public void cargarInformacionRestaurante(final File fIngrediente, final File fMenu, final File fCombo, final File fBebida) {
+    public void cargarInformacionRestaurante(File fIngrediente, File fMenu, File fCombo, File fBebida) {
         this.cargarIngredientes(fIngrediente);
         this.cargarMenu(fMenu);
         this.cargarCombo(fCombo);
     }
     
-    private void cargarCombo(final File fCombo) {
+    private void cargarCombo(File fCombo) {
         try {
-            final BufferedReader br = new BufferedReader(new FileReader(fCombo));
-            final String line = br.readLine();
+            BufferedReader br = new BufferedReader(new FileReader(fCombo));
+            String line = br.readLine();
             while (line != null) {
-                final String[] info = line.split(";");
-                final String name = info[0];
-                final String dcto = info[1].replace("%", "");
-                final double disc = Double.parseDouble(dcto) * 0.01;
-                final Combo comb = new Combo(disc, name);
+                String[] info = line.split(";");
+                String name = info[0];
+                String dcto = info[1].replace("%", "");
+                double disc = Double.parseDouble(dcto) * 0.01;
+                Combo comb = new Combo(disc, name);
                 for (int i = 2; i < info.length; ++i) {
-                    final ProductoMenu item = this.findProduct(info[i]);
+                    ProductoMenu item = this.findProduct(info[i]);
                     comb.agregarItemACombo((Producto)item);
                 }
                 this.combos.add(comb);
+                line = br.readLine();
             }
             br.close();
         }
         catch (IOException e) {
             System.err.println("Error con el archivo brother");
+            e.printStackTrace();
         }
     }
     
-    private ProductoMenu findProduct(final String productName) {
+    private ProductoMenu findProduct(String productName) {
         ProductoMenu toRet = null;
         for (int i = 0; i < this.menuBase.size() && toRet == null; ++i) {
             if (productName.equals(this.menuBase.get(i).getNombre())) {
@@ -70,14 +66,15 @@ public class Restaurante
         return toRet;
     }
     
-    private void cargarMenu(final File fMenu) {
+    private void cargarMenu(File fMenu) {
         try {
-            final BufferedReader br = new BufferedReader(new FileReader(fMenu));
-            final String line = br.readLine();
+            BufferedReader br = new BufferedReader(new FileReader(fMenu));
+            String line = br.readLine();
             while (line != null) {
-                final String[] info = line.split(";");
-                final ProductoMenu pm = new ProductoMenu(info[0], Integer.parseInt(info[1]));
+                String[] info = line.split(";");
+                ProductoMenu pm = new ProductoMenu(info[0], Integer.parseInt(info[1]));
                 this.menuBase.add(pm);
+                line = br.readLine();
             }
             br.close();
         }
@@ -86,14 +83,15 @@ public class Restaurante
         }
     }
     
-    private void cargarIngredientes(final File fIngrediente) {
+    private void cargarIngredientes(File fIngrediente) {
         try {
-            final BufferedReader br = new BufferedReader(new FileReader(fIngrediente));
-            final String line = br.readLine();
+            BufferedReader br = new BufferedReader(new FileReader(fIngrediente));
+            String line = br.readLine();
             while (line != null) {
-                final String[] info = line.split(";");
-                final Ingrediente ing = new Ingrediente(info[0], Integer.parseInt(info[1]));
+                String[] info = line.split(";");
+                Ingrediente ing = new Ingrediente(info[0], Integer.parseInt(info[1]));
                 this.ingredientes.add(ing);
+                line = br.readLine();
             }
             br.close();
         }
@@ -102,7 +100,7 @@ public class Restaurante
         }
     }
     
-    public void iniciarPedido(final String nameCliente, final String dirCliente) {
+    public void iniciarPedido(String nameCliente, String dirCliente) {
         this.pedidoEnCurso = new Pedido(nameCliente, dirCliente);
     }
     
@@ -111,12 +109,14 @@ public class Restaurante
         this.pedidoEnCurso = null;
     }
     
-    public String consultarId(final int id) {
-        for (final Pedido item : this.pedidos) {
+    public String consultarId(int id) {
+        for (Pedido item : this.pedidos) {
             if (item.getIdPedido() == id) {
                 return item.toString();
             }
         }
         return "NaN-No Existe";
     }
+    
+    
 }
