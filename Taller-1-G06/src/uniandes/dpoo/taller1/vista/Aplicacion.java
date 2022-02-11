@@ -24,8 +24,16 @@ public class Aplicacion
     }
     
     public void mostrarMenu() {
-        System.out.println("0. Cargar informacion2. Iniciar nuevo pedido3. Cerrar pedido y guardar factura4. Consultar informacion del pedido por id");
-    }
+    	
+    	System.out.println("Opciones de la aplicacion");
+		System.out.println("1. Mostar el menu");
+		System.out.println("2. Iniciar un nuevo pedido");
+		System.out.println("3. Agregar un elemento a un pedido");
+		System.out.println("4. Cerrar un pedido y guardar la factura");
+	    System.out.println("5. Consultar la informacion de un pedido dado su id");
+	    System.out.println("6. Salir de la aplicacion");
+	}	
+    
     
     public void ejecutarOpcion(final int choosen) {
         switch (choosen) {
