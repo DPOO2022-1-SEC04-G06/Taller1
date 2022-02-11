@@ -8,15 +8,18 @@ public class ProductoMenu implements Producto {
 		this.nombre = nombre;
 		this.precioBase = precioBase;
 	}
-
+	
+	@Override
 	public int getPrecio() {
 		return this.precioBase;
 	}
 
+	@Override
 	public String getNombre() {
 		return this.nombre;
 	}
 
+	@Override
 	public String generarTextoFactura() {
 		return "El producto " + getNombre() + " tiene un precio de " + getPrecio();
 	}

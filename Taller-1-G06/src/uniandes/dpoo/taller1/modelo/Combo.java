@@ -17,7 +17,8 @@ public class Combo implements Producto{
 	public void agregarItemACombo(Producto itemCombo) {
 		this.itemsCombo.add((ProductoMenu) itemCombo);
 	}
-
+	
+	@Override
 	public int getPrecio() {
 		int sum = 0;
 		for (ProductoMenu pr : this.itemsCombo) {
@@ -25,7 +26,8 @@ public class Combo implements Producto{
 		}
 		return (int) (sum * this.descuento);
 	}
-
+	
+	@Override
 	public String generarTextoFactura() {
 		String items = "";
 		for (ProductoMenu item : itemsCombo) {
@@ -34,7 +36,8 @@ public class Combo implements Producto{
 		return "El combo " + getNombre() + " tiene " + items.substring(0, items.length() - 2) + " con un descuento de "
 				+ descuento + " debes pagar " + getPrecio();
 	}
-
+	
+	@Override
 	public String getNombre() {
 		return this.nombreCombo;
 	}

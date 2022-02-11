@@ -53,7 +53,7 @@ public class Pedido {
 		for (Producto p : itemsPedido) {
 			toRet += p.generarTextoFactura() + ", ";
 		}
-		return toRet.substring(0, toRet.length() - 2) + " debe pagar " + getPrecioTotalPedido();
+		return idPedido + toRet.substring(0, toRet.length() - 2) + " debe pagar " + getPrecioTotalPedido();
 	}
 
 	public void guardarFactura(File arc) throws IOException {

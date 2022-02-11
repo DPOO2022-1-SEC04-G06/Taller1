@@ -91,15 +91,17 @@ public class Restaurante {
 		return toRet;
 	}
 
-	public void iniciarPedido(String nameCliente, String dirCliente) {
+	public void iniciarPedido(String nameCliente, String dirCliente) throws IOException {
+		if (pedidoEnCurso != null) {
+			cerrarYGuardarPedido();
+		}
 		this.pedidoEnCurso = new Pedido(nameCliente, dirCliente);
 	}
 
 	public void cerrarYGuardarPedido() throws IOException {
 		this.pedidos.add(this.pedidoEnCurso);
-		this.pedidoEnCurso.guardarFactura(new File(Aplicacion.path("facturas.txt")));
+		this.pedidoEnCurso.guardarFactura(new File(Aplicacion.path("facturas")));
 		this.pedidoEnCurso = null;
-
 	}
 
 	public String consultarId(int id) {

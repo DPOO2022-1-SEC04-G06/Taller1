@@ -13,7 +13,8 @@ public class ProductoAjustado implements Producto {
 		this.eliminados = new ArrayList<Ingrediente>();
 		this.base = pBase;
 	}
-
+	
+	@Override
 	public int getPrecio() {
 		int sumAdded = 0;
 		for (int i = 0; i < this.agregados.size(); ++i) {
@@ -22,10 +23,12 @@ public class ProductoAjustado implements Producto {
 		return this.base.getPrecio() + sumAdded;
 	}
 
+	@Override
 	public String getNombre() {
 		return String.valueOf(this.base.getNombre()) + "*";
 	}
 
+	@Override
 	public String generarTextoFactura() {
 		String itemsPlus = "", itemsMin = "";
 		for (Ingrediente item : agregados) {
@@ -34,7 +37,7 @@ public class ProductoAjustado implements Producto {
 		for (Ingrediente item : eliminados) {
 			itemsMin += item.getNombre() + ", ";
 		}
-		return "El producto " + base.getNombre() + "con " + itemsPlus.substring(0, itemsPlus.length() - 2) + "sin "
+		return "El producto " + base.getNombre() + " con " + itemsPlus.substring(0, itemsPlus.length() - 2) + " sin "
 				+ itemsMin.substring(0, itemsMin.length() - 2);
 	}
 	

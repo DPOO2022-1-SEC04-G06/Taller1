@@ -8,7 +8,7 @@ public class Ingrediente {
 		this.nombre = nombre;
 		this.costoAdicional = costoAdicional;
 	}
-
+	
 	public String getNombre() {
 		return this.nombre;
 	}
