@@ -23,7 +23,7 @@ public class Combo implements Producto{
 	@Override
 	public int getPrecio() {
 		int sum = 0;
-		for (ProductoMenu pr : this.itemsCombo) {
+		for (Producto pr : this.itemsCombo) {
 			sum += pr.getPrecio();
 		}
 		return (int) (sum * this.descuento);
@@ -32,7 +32,7 @@ public class Combo implements Producto{
 	@Override
 	public String generarTextoFactura() {
 		String items = "";
-		for (ProductoMenu item : itemsCombo) {
+		for (Producto item : itemsCombo) {
 			items += item.generarTextoFactura() + ", ";
 		}
 		return "El combo " + getNombre() + " tiene " + items.substring(0, items.length() - 2) + " con un descuento de "
@@ -47,7 +47,7 @@ public class Combo implements Producto{
 	@Override
 	public int getCalorias() {
 		int sumCal = 0;
-		for(ProductoMenu item : itemsCombo) {
+		for(Producto item : itemsCombo) {
 			sumCal += item.getCalorias();
 		}
 		
