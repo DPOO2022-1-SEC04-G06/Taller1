@@ -1,0 +1,10 @@
+cocacola;4000;80
+limonada;4500;57
+cerezada;6000;90
+jugo durazno;4000;56
+jugo fresa;4000;100
+jugo mora;4000;30
+cerveza;3500;70
+jugo mandarina;4000;60
+pepsi;3000;80
+manzana;3500;80
