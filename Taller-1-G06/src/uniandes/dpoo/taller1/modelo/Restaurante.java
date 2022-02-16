@@ -169,10 +169,15 @@ public class Restaurante {
 
 	public void aniadirProducto(String nameProducto, String[] modification, boolean mod) {
 		ProductoMenu buscarProducto = buscarP(nameProducto);
+		Bebida buscarBeb = null;
 		Combo buscarCombo = null;
+		
 		if (buscarProducto == null) {
 			buscarCombo = buscarC(nameProducto);
 			this.pedidoEnCurso.agregarProducto(buscarCombo);
+		} else if (buscarCombo == null) {
+			buscarBeb = buscarB(nameProducto);
+			this.pedidoEnCurso.agregarProducto(buscarBeb);
 		} else {
 			if (mod) {
 				ProductoAjustado pA = new ProductoAjustado(buscarProducto);
@@ -215,6 +220,15 @@ public class Restaurante {
 		for (Ingrediente i : ingredientes) {
 			if (i.getNombre().contains(nameIngre)) {
 				return i;
+			}
+		}
+		return null;
+	}
+	
+	private Bebida buscarB(String nameBeb) {
+		for (Bebida b : bebidas) {
+			if (b.getNombre().contains(nameIngre)) {
+				return b;
 			}
 		}
 		return null;
