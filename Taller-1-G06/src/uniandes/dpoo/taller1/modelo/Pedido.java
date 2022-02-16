@@ -60,6 +60,7 @@ public class Pedido {
 
 	public void guardarFactura(File arc) throws IOException {
 		BufferedWriter bw = new BufferedWriter(new FileWriter(arc, true));
+		bw.newLine();
 		bw.append(generarTextoFactura());
 		bw.close();
 	}
