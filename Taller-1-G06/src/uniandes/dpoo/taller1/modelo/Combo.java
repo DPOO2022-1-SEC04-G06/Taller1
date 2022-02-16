@@ -8,16 +8,16 @@ import java.util.Objects;
 public class Combo implements Producto{
 	private double descuento;
 	private String nombreCombo;
-	private List<ProductoMenu> itemsCombo;
+	private List<Producto> itemsCombo;
 
 	public Combo(double descuento, String nombreCombo) {
 		this.descuento = descuento;
 		this.nombreCombo = nombreCombo;
-		this.itemsCombo = new ArrayList<ProductoMenu>();
+		this.itemsCombo = new ArrayList<Producto>();
 	}
 
 	public void agregarItemACombo(Producto itemCombo) {
-		this.itemsCombo.add((ProductoMenu) itemCombo);
+		this.itemsCombo.add(itemCombo);
 	}
 	
 	@Override
@@ -63,8 +63,8 @@ public class Combo implements Producto{
 		if (getClass() != obj.getClass())
 			return false;
 		Combo other = (Combo) obj;
-		HashSet<ProductoMenu> item1 = new HashSet<ProductoMenu>(itemsCombo);
-		HashSet<ProductoMenu> item2 = new HashSet<ProductoMenu>(other.itemsCombo);
+		HashSet<Producto> item1 = new HashSet<Producto>(itemsCombo);
+		HashSet<Producto> item2 = new HashSet<Producto>(other.itemsCombo);
 		return item1.equals(item2);
 	}
 	
