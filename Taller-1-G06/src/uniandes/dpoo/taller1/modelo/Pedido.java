@@ -66,11 +66,6 @@ public class Pedido {
 	}
 
 	@Override
-	public int hashCode() {
-		return Objects.hash(itemsPedido);
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
