@@ -29,8 +29,9 @@ public class Restaurante {
 			throws IOException {
 		this.cargarIngredientes(fIngrediente);
 		this.cargarMenu(fMenu);
-		this.cargarCombo(fCombo);
 		this.cargarBebida(fBebida);
+		this.cargarCombo(fCombo);
+		
 	}
 
 	private void cargarBebida(File fBebida) throws IOException {
@@ -150,6 +151,10 @@ public class Restaurante {
 			basic += p.getNombre() + ">>" + p.getPrecio() + "\n";
 		}
 		basic += "====================================";
+		basic += "==============Bebidas===============\n";
+		for (Bebida b : bebidas) {
+			basic += b.getNombre() +  ">>" + b.getPrecio() + "\n";
+		}
 		return basic;
 	}
 
