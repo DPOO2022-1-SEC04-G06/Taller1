@@ -67,8 +67,8 @@ public class Restaurante {
 			double disc = Double.parseDouble(dcto) * 0.01;
 			Combo comb = new Combo(disc, name);
 			for (int i = 2; i < info.length; ++i) {
-				ProductoMenu item = this.findProduct(info[i]);
-				comb.agregarItemACombo((Producto) item);
+				Producto item = this.findProduct(info[i]);
+				comb.agregarItemACombo(item);
 			}
 			this.combos.add(comb);
 			line = br.readLine();
@@ -88,11 +88,20 @@ public class Restaurante {
 		br.close();
 	}
 
-	private ProductoMenu findProduct(String productName) {
-		ProductoMenu toRet = null;
+	private Producto findProduct(String productName) {
+		Producto toRet = null;
 		for (int i = 0; i < this.menuBase.size() && toRet == null; ++i) {
 			if (productName.equals(this.menuBase.get(i).getNombre())) {
 				toRet = this.menuBase.get(i);
+			}
+		}
+		if (toRet != null) {
+			return toRet;
+		}
+		
+		for (int i = 0; i < this.bebidas.size() && toRet == null; ++i) {
+			if (productName.equals(this.bebidas.get(i).getNombre())) {
+				toRet = this.bebidas.get(i);
 			}
 		}
 		if (toRet == null) {
